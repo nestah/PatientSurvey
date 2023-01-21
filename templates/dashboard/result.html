@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <link href="{% static 'js/main.js' %}">
+
+
+
+
+
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Result</title>
+
+    </head>
+    <body>
+
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">Jijue</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="{% url 'message-page' %}" class="nav__link">Referral</a></li>
+                        <li class="nav__item"><a href="https://mydawa.com/products/flash-sale/sure-check-hiv-self-test-kit" class="nav__link">Order Test Kit</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <section>
+                <!---====STATIC BOOK APPOINTMENT===-->
+
+         <div class="fixed-button">
+            <a href="{% url 'home' %}" class="btn-fixedButton">Book Appointment</a>
+        </div>
+            </section>
+
+            <!--===== CONTACT =====-->
+            <section class="contact section" id="contact">
+                <h2 class="section-title" style="font-size: 24px;">Risk Report</h2>
+                    
+                <div class="contact__container bd-grid">
+                    {% if result %}
+                    <p style="font-weight: 600;"> <button class="welcomeBtn">{{result}}</button></p>
+                    {% endif %}
+
+                    <br>
+        
+                </div>
+                
+                <div class="contact__container bd-grid">
+
+                  <h4 style="color: hsl(224, 89%,60%);">WHAT DOES IT MEAN TO BE LOW RISK?</h4>
+                  <p> This means that you are less likely to have been exposed to HIV based on the risk assessment.</p>
+                  <p> To confirm your HIV status, you can get tested by:</p>
+                  <p>Booking an appointment to visit the nearest VCT centre or <br> order a self-test kit and test yourself at the comfort of your home.</p>
+                  <br>
+                  <p style="font-weight: 600;"> You can remain at low risk by;</p>
+                 
+                  <p> - Practicing safe sex by consistent and correct condom use.</p>
+                  <p> - Do not use an already used needle/syringe</p>
+                  <p> - Frequent screening for sexually transmitted infections .</p>
+                  <p> - Continually educate yourself on HIV transmission.</p>
+                  <br>
+                 <p>All these will reduce the chances of getting exposed to HIV.</p> <br>
+
+                  
+                 <h4 style="color: hsl(224, 89%,60%);"> WHAT DOES IT MEAN TO BE MEDIUM RISK?</h4>
+                  
+                 <p>This means that you are moderately likely to have been exposed to HIV. </p>
+                 <p>However, this does not mean that you will definitely turn out to be HIV positive once tested.</p>
+                 <p>To confirm your HIV status, you can get tested by:</p>
+                <p>Booking an appointment to visit the nearest VCT centre or <br> order a self-test kit and test yourself at the comfort of your home.</p>
+                 <p>If screening has not been done yet, and its within 72hours (3 days) of highly likely HIV exposure, PEP is advisable</p>
+                 <p>After screening, and you turn out to be negative, it’s advisable to start on PrEP.</p>
+                  <br>
+
+                  <h4 style="color: hsl(224, 89%,60%);">WHAT DOES IT MEAN TO BE HIGH RISK?</h4>
+
+                  <p>This means that you are highly likely to have been exposed to HIV.</p>
+                  <p>However, this does not mean that you will definitely turn out to be HIV positive once tested.</p>
+                  <p>To confirm your HIV status, you can get tested by:</p>
+                  <p>Booking an appointment to visit the nearest VCT centre or <br> order a self-test kit and test yourself at the comfort of your home.</p>
+                  <p>If screening has not been done yet, and its within 72hours(3 days) of highly likely HIV exposure, PEP is advisable </p>
+                  <p>If you turn out to be negative after screening, it’s advisable to start on PrEP.</p>
+                  <br>
+
+                  
+                  <h4 style="color: hsl(224, 89%,60%)">PREVENTION OF MOTHER-TO-CHILD TRANSMISSION</h4>
+                  <p>All women of reproductive age should be on contraceptive use to prevent unplanned pregnancies.</p>
+                  <p>You are advised to have frequent HIV and pregnancy self-test</p>
+                   
+                
+                </div>
+            </section>
+
+
+
+          </main>
+
+
+        
+ <!--===== FOOTER =====-->
+ <footer class="footer">
+  <p class="footer__title">Jijue</p>
+  <div class="footer__social">
+      <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+      <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+      <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+      
+  </div>
+  <p class="footer__copy">&#169; Jijue | All rigths reserved | Privacy & Policy </p>
+</footer>
+
+
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src=""></script>
+    
+    
+    </body>
+</html>
+
+
+
+
+

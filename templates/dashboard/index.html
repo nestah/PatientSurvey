@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+       
+             <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Dashboard</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white">Health Facilities</h6>
+                                <h6 class="text-white">1700</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Questionnaires</h6>
+                                <h6 class="text-white">25</h6>
+                            </div>
+                        </div>
+                    </div>
+                      <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Active Questionnaires</h6>
+                                <h6 class="text-white">18</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-arrow-all"></i></h1>
+                                <h6 class="text-white">Completed surveys</h6>
+                                <h6 class="text-white">20</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <iframe style="background: #F1F5F4;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="100%" height="480"
+              src="https://charts.mongodb.com/charts-project-0-pzeir/embed/dashboards?id=ee9e7273-55b3-4709-ad3e-b650980b8c7f&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"></iframe>
+                {% comment %} <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Response Analysis</h4>
+                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                   
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="bg-dark p-10 text-white text-center">
+                                                   <i class="fa fa-user m-b-5 font-16"></i>
+                                                   <h5 class="m-b-0 m-t-5">240</h5>
+                                                   <small class="font-light">Total Users</small>
+                                                </div>
+                                            </div>
+                                             <div class="col-6">
+                                                <div class="bg-dark p-10 text-white text-center">
+                                                   <i class="fa fa-plus m-b-5 font-16"></i>
+                                                   <h5 class="m-b-0 m-t-5">20</h5>
+                                                   <small class="font-light">New Users</small>
+                                                </div>
+                                            </div>
+                                             <div class="col-6 m-t-15">
+                                                <div class="bg-dark p-10 text-white text-center">
+                                                   <i class="fa fa-tag m-b-5 font-16"></i>
+                                                   <h5 class="m-b-0 m-t-5">6</h5>
+                                                   <small class="font-light">Designations</small>
+                                                </div>
+                                            </div>
+                                          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                    </div>
+                </div>
+            </div> {% endcomment %}
+           
+    {% endblock content %} 
+       
