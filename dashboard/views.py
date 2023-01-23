@@ -148,7 +148,7 @@ def getRoutes(request):
             'Endpoint': '/api/questionnaire/create',
             'Method': 'POST',
             'Body': {'body':""},
-            'description':'creates a new note with data sent in the new req',
+            'description':'creates a new questionnaire with data sent in the new req',
         },
           {
             'Endpoint': '/api/questionnaire/id/update',
@@ -165,7 +165,7 @@ def getRoutes(request):
     ]
     return Response(routes)
 
-# get all notes 
+# get all questionnaires
 @api_view(['GET'])
 def getQuestionnaires(request):
         Questionnaires = QuestionnaireApi.objects.all()
