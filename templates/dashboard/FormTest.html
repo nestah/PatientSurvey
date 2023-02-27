@@ -1,0 +1,518 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+  <link rel="stylesheet" href="{% static 'styles/mainpage.css' %}">
+
+
+
+  <title>Jijue Risk Assessment</title>
+
+
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <header class="header">
+              <h1 id="title" class="text-center">Risk Assessment Form</h1>
+              <p id="description" class="description text-center">
+                Thank you for taking the time for self screening
+              </p>
+            </header>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label id="number-label" for="number"
+                > What is your age?</label>
+                <input
+                type="number"
+                name="age"
+                id="number"
+                min="5"
+                max="99"
+                class="form-control"
+                placeholder="Age"
+                required
+                />
+            </div>
+
+
+            <!--==GENDER==-->
+            <div class="form-group">
+                <p>What is your sex?</p>
+                <label>
+                  <input
+                    name="gender"
+                    value="1"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Male</label
+                >
+                
+                <label
+                  ><input
+                    name="gender"
+                    value="0"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Female</label
+                >
+              </div>
+            
+
+            <!--==COUNTY OF RESIDENCE==-->
+            <div class="form-group">
+            <p>What is your current county of residence?</p>
+            <select id="most-like" name="county" class="form-control" required>
+                <option disabled selected value>Select an option</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Kwale">Kwale</option>
+                <option value="Kilifi">Kilifi</option>
+                <option value="TanaRiver">Tana River</option>
+                <option value="Lamu">Lamu</option>
+                <option value="Taita-Taveta">Taita-Taveta</option>
+                <option value="Garissa">Garissa</option>
+                <option value="Wajir">Wajir</option>
+                <option value="Mandera">Mandera</option>
+                <option value="Marsabit">Marsabit</option>
+                <option value="Isiolo">Isiolo</option>
+                <option value="Meru">Meru</option>
+                <option value="Tharaka-Nithi">Tharaka-Nithi</option>
+                <option value="Embu">Embu</option>
+                <option value="Kitui">Kitui</option>
+                <option value="Machakos">Machakos</option>
+                <option value="Makueni">Makueni</option>
+                <option value="Nyandarua">Nyandarua</option>
+                <option value="Nyeri">Nyeri</option>
+                <option value="Kirinyaga">Kirinyaga</option>
+                <option value="Murang'a">Murang'a</option>
+                <option value="Kiambu">Kiambu</option>
+                <option value="Turkana">Turkana</option>
+                <option value="West Pokot">West Pokot</option>
+                <option value="Samburu">Samburu</option>
+                <option value="Trans Nzoia">Trans Nzoia</option>
+                <option value="Uasin Gishu">Uasin Gishu</option>
+                <option value="Elgeyo-Marakwet">Elgeyo-Marakwet</option>
+                <option value="Nandi">Nandi</option>
+                <option value="Baringo">Baringo</option>
+                <option value="Laikipia">Laikipia</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Narok">Narok</option>
+                <option value="Kajiado">Kajiado</option>
+                <option value="Kericho">Kericho</option>
+                <option value="Bomet">Bomet</option>
+                <option value="Kakamega">Kakamega</option>
+                <option value="Vihiga">Vihiga</option>
+                <option value="Bungoma">Bungoma</option>
+                <option value="Busia">Busia</option>
+                <option value="Siaya">Siaya</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Homabay">Homabay</option>
+                <option value="Migori">Migori</option>
+                <option value="Kisii">Kisii</option>
+                <option value="Myamira">Nyamira</option>
+                <option value="Nairobi">Nairobi</option>
+            </select>
+            </div>
+
+
+             <!--==MARITAL STATUS==-->
+             <div class="form-group">
+              <p>What is your marital status?</p>
+              <label>
+                <input
+                  name="maritalStatus"
+                  value="1"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Single</label
+              >
+              <label>
+                <input
+                  name="maritalStatus"
+                  value="0"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Cohabiting</label
+              >
+              <label>
+                <input
+                  name="maritalStatus"
+                  value="0"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Married Monogamous</label
+              >
+              <label>
+                <input
+                  name="maritalStatus"
+                  value="0"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Married Polygamous</label
+              >
+              <label>
+                <input
+                  name="maritalStatus"
+                  value="0"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Divorced</label
+              >
+              <label>
+                <input
+                  name="maritalStatus"
+                  value="0"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Widowed</label
+              >              
+            </div>
+
+
+             <!--==COUPLE DISCORDANT==-->
+             <div class="form-group">
+              <p>Is/was your partner HIV positive?</p>
+              <label>
+                <input
+                  name="coupleDiscordant"
+                  value="1"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Yes</label
+              >
+              <label
+                ><input
+                  name="coupleDiscordant"
+                  value="0"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />No</label
+              >
+           </div>
+        
+          
+
+            <!--==SEX WITH WOMAN==-->
+            <div class="form-group">
+              <p>In the past 12 months, have you had sex with a woman?</p>
+              <label>
+                <input
+                  name="SexWithWoman"
+                  value="Yes"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Yes</label
+              >
+              <label
+                ><input
+                  name="SexWithWoman"
+                  value="No"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />No</label
+              >
+           </div>
+
+
+            <!--==SEX WITH MAN==-->
+            <div class="form-group">
+              <p>In the past 12 months, have you had sex with a man?</p>
+              <label>
+                <input
+                  name="SexWithMan"
+                  value="Yes"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Yes</label
+              >
+              <label
+                ><input
+                  name="SexWithMan"
+                  value="No"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />No</label
+              >
+           </div>
+
+
+            <!--==CONDOM USE==-->
+            <div class="form-group">
+              <p>In the past 12 months, did you use condoms for vaginal or anal sex?</p>
+              <label>
+                <input
+                  name="condom_use"
+                  value="Always"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />I always use condoms with all my partners</label
+              >
+              <label
+                ><input
+                  name="condom_use"
+                  value="Sometimes"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />I sometimes use condoms with all my partners</label
+              >
+              <label
+                ><input
+                  name="condom_use"
+                  value="Never"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />I never use condoms with all my partners</label
+              >
+              <label
+                ><input
+                  name="condom_use"
+                  value="Not applicable"
+                  type="radio"
+                  class="input-radio"
+                  required
+                />Not applicable as no vaginal or anal sex</label
+              >
+           </div>
+
+            
+             <!--==SW==-->
+             <div class="form-group">
+                <p>Are you a sex worker?</p>
+                <label>
+                  <input
+                    name="sw"
+                    value="1"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                
+                <label
+                  ><input
+                    name="sw"
+                    value="0"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+            
+             <!--==PWID==-->
+             <div class="form-group">
+                <p>Do you regularly use needles to inject drugs?</p>
+                <label>
+                  <input
+                    name="pwid"
+                    value="1"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                
+                <label
+                  ><input
+                    name="pwid"
+                    value="0"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+
+
+             <!--==TESTEDBEFORE IN THE PAST 3 MONTHS==-->
+             <div class="form-group">
+                <p>Have you been tested for HIV in the past 3 months?</p>
+                <label>
+                  <input
+                    name="testedBefore"
+                    value="1"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                <label
+                  ><input
+                    name="testedBefore"
+                    value="0"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+
+
+             <!--==PRESUMED TB==-->
+             <div class="form-group">
+                <p>Have you experienced any one of these symptoms? (cough at any duration, fever, unintended weight loss, drenching night sweat)?</p>
+                <label>
+                  <input
+                    name="presumedTB"
+                    value="1"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                <label
+                  ><input
+                    name="presumedTB"
+                    value="0"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+
+
+            
+             <!--==ON TB TREATMENT==-->
+             <div class="form-group">
+                <p>Are you on TB treatment?</p>
+                <label>
+                  <input
+                    name="treatmentTB"
+                    value="1"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                <label
+                  ><input
+                    name="treatmentTB"
+                    value="0"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+             
+            
+
+            <!--==STI==-->
+            <div class="form-group">
+                <p>Have you had STI (Sexually Transmitted Infections) in the past?</p>
+                <label>
+                  <input
+                    name="sti"
+                    value="Yes"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                <label
+                  ><input
+                    name="sti"
+                    value="No"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+
+
+             <!--==RAPE==-->
+             <div class="form-group">
+                <p>Have you ever been a victim of rape?</p>
+                <label>
+                  <input
+                    name="rapevictim"
+                    value="Yes"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                <label
+                  ><input
+                    name="rapevictim"
+                    value="No"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+
+
+             <!--==PrEP==-->
+             <div class="form-group">
+                <p>Are you currently using HIV Pre-exposure Prophylaxis (PrEP)?</p>
+                <label>
+                  <input
+                    name="HIVPrEP"
+                    value="Yes"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />Yes</label
+                >
+                <label
+                  ><input
+                    name="HIVPrEP"
+                    value="No"
+                    type="radio"
+                    class="input-radio"
+                    required
+                  />No</label
+                >
+             </div>
+             
+
+
+                <!--==SUBMIT==-->
+                <div class="form-group">
+                    <button type="submit" id="submit" class="submit-button">
+                      Submit
+                    </button>
+                  </div>
+
+            
+        </form>
+        </div>
+
+
+
+  
+    </section>
+
+</body>
+
+</html>

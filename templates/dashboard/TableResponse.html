@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}
+Questionnaire
+
+{% endblock %}
+{% block headscript %}
+ <style>
+        @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+        table.view-table > tbody > tr.view td, table.view-table > tbody > tr.view th {
+            cursor: pointer;
+        }
+
+        table.view-table > tbody > tr.view td:first-child,
+        table.view-table > tbody > tr.view th:first-child {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        table.view-table > tbody > tr.view td:first-child:before,
+        table.view-table > tbody > tr.view th:first-child:before {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            width: 9px;
+            height: 16px;
+            margin-top: -8px;
+            font: 16px fontawesome;
+            content: "\f0d7";
+            transition: all .3s ease;
+        }
+
+
+        table.view-table > tbody > tr.view.open {
+            background: gray;
+            color: white;
+        }
+
+        table.view-table > tbody > tr.view.open td:first-child:before,
+        table.view-table > tbody > tr.view.open th:first-child:before {
+            transform: rotate(-180deg);
+            color: #333333;
+        }
+
+        table.view-table > tbody > tr.fold {
+            display: none;
+        }
+
+        table.view-table > tbody > tr.fold.open {
+            display: table-row;
+        }
+
+        .fold-content {
+            padding: .5em;
+        }
+
+        .fold-content h3 {
+            margin-top: 0;
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container-fluid mt--6">
+<div class="col">
+<div class="card">
+   <div class="card-header border-0">
+                    <div class="row align-items-center py-4">
+                        
+                        <h3 class="mb-0">Response List</h3>
+                        
+                        <div class="col-lg-6 col-5 text-right">
+                               
+                        </div>
+                        <a class='mx-3' style="text-align: right" href="{% url  'dashboard' %}">Home</a>
+                        <div class="table-responsive">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Questionnaire Response Charts</h5>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="Qtype">Active Questionnaire Samples</label>
+                                        <select class="form-control" id="Qtype" name="Qtype" >
+                                        <option class="custom-control-label" value="False">--- Choosse Questionnaire Sample ---</option> 
+                                         <option class="custom-control-label" value="True">ART Verification Process</option>
+                                         <option class="custom-control-label" id="KP Beneficiaries Interviews" value="KP Beneficiaries Interviews">KP Beneficiaries Interviews</option>
+                                          <option class="custom-control-label" value="False">Weight Loss</option>
+                                        </select>
+                               </div>
+                                </div>
+                            </div>
+                        <!-- end card here-->
+                        {% if  id == "KP Beneficiaries Interviews" %}
+                        <iframe width="100%" height="480" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7FABbJ9pK0IH208k2wmH_RAPDo_ypIT9DLA5B_D4rkqNjXp0jSvz4tMwbjjfCpTlU65IgDE6DHE3N/pubhtml?widget=true&amp;headers=false"></iframe>
+                        {% else %}
+                        <iframe width="100%" height="480" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7FABbJ9pK0IH208k2wmH_RAPDo_ypIT9DLA5B_D4rkqNjXp0jSvz4tMwbjjfCpTlU65IgDE6DHE3N/pubhtml?widget=true&amp;headers=false"></iframe>
+                        
+                         {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+
+

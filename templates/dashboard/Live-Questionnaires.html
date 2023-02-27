@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Live-Questionnaires
+
+{% endblock %}
+{% block body %}
+  {% for i in response %}
+  {{i.region }}
+  {% endfor %}
+{% endblock %}

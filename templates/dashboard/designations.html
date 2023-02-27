@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Designations
+
+{% endblock %}
+{% block headscript %}
+ <style>
+        @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+        table.view-table > tbody > tr.view td, table.view-table > tbody > tr.view th {
+            cursor: pointer;
+        }
+
+        table.view-table > tbody > tr.view td:first-child,
+        table.view-table > tbody > tr.view th:first-child {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        table.view-table > tbody > tr.view td:first-child:before,
+        table.view-table > tbody > tr.view th:first-child:before {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            width: 9px;
+            height: 16px;
+            margin-top: -8px;
+            font: 16px fontawesome;
+            content: "\f0d7";
+            transition: all .3s ease;
+        }
+
+
+        table.view-table > tbody > tr.view.open {
+            background: gray;
+            color: white;
+        }
+
+        table.view-table > tbody > tr.view.open td:first-child:before,
+        table.view-table > tbody > tr.view.open th:first-child:before {
+            transform: rotate(-180deg);
+            color: #333333;
+        }
+
+        table.view-table > tbody > tr.fold {
+            display: none;
+        }
+
+        table.view-table > tbody > tr.fold.open {
+            display: table-row;
+        }
+
+        .fold-content {
+            padding: .5em;
+        }
+
+        .fold-content h3 {
+            margin-top: 0;
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container-fluid mt--6">
+<div class="col">
+<div class="card">
+   <div class="card-header border-0">
+                    <div class="row align-items-center py-4">
+
+                        <h3 class="mb-0">Designations List</h3>
+                        <div class="col-lg-6 col-5 text-right">
+                            
+                                {% comment %} <a href="{% url 'new_questionnaire' %}" class="btn btn-sm btn-neutral">New Designation</a> {% endcomment %}
+                                   
+                            <button class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#exampleModal">
+                                Filters
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                        {% comment %} <p class="mx-3" style="text-align: right">
+                         Questionnaire count: {{count}}
+                        </p> {% endcomment %}
+                        <table class="table align-items-center table-flush view-table">
+                           
+                        <thead class="thead-view">
+                          <tr>
+                          
+                          <th>Serial No.</th>
+                          {% comment %} <th scope="col">Created At</th> {% endcomment %}
+                          <th scope="col">Name</th>
+                          <th scope="col">Designation Title</th>
+                          {% comment %} <th scope="col">Created At</th> {% endcomment %}
+                          </tr>
+                        </thead>
+                        
+                        <!--table body start-->
+                      
+                      
+                       
+                      <tbody class="list">
+                        
+                        {% for Designation in Designations %}
+                          <tr class="view">
+                                <th scope="col">{{ forloop.counter}}</th>
+                                <td></td>
+                                <td>{{ Designation.title }}</td>
+                                <td>{{ Designation.text }}</td>
+                               
+                                {% comment %} <td>{{ Designations.date_added }}</td> {% endcomment %}
+            
+                                </td>
+                            </tr>
+                              
+                            {% endfor %}
+                      </tbody>
+                            
+            
+                        <!--table body end-->
+                        </table>
+                        </div>
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% block title %}
+Questionnaire
+
+{% endblock %}
+{% block headscript %}
+ <style>
+        @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+        table.view-table > tbody > tr.view td, table.view-table > tbody > tr.view th {
+            cursor: pointer;
+        }
+
+        table.view-table > tbody > tr.view td:first-child,
+        table.view-table > tbody > tr.view th:first-child {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        table.view-table > tbody > tr.view td:first-child:before,
+        table.view-table > tbody > tr.view th:first-child:before {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            width: 9px;
+            height: 16px;
+            margin-top: -8px;
+            font: 16px fontawesome;
+            content: "\f0d7";
+            transition: all .3s ease;
+        }
+
+
+        table.view-table > tbody > tr.view.open {
+            background: gray;
+            color: white;
+        }
+
+        table.view-table > tbody > tr.view.open td:first-child:before,
+        table.view-table > tbody > tr.view.open th:first-child:before {
+            transform: rotate(-180deg);
+            color: #333333;
+        }
+
+        table.view-table > tbody > tr.fold {
+            display: none;
+        }
+
+        table.view-table > tbody > tr.fold.open {
+            display: table-row;
+        }
+
+        .fold-content {
+            padding: .5em;
+        }
+
+        .fold-content h3 {
+            margin-top: 0;
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container-fluid mt--6">
+<div class="col">
+<div class="card">
+   <div class="card-header border-0">
+                    <div class="row align-items-center py-4">
+                        
+                        <h3 class="mb-0">Questionnaire List</h3>
+                        
+                        <div class="col-lg-6 col-5 text-right">
+                            {% if u.access_level.id == 5 %}
+                            {% if perms.survey.add_questionnaire %}
+                            
+                                    <a href="{% url 'new_questionnaire' %}" class="btn btn-sm btn-neutral">New Questionnaire</a>
+                             {% endif %}
+                             {% elif u.access_level.id != 4 %}
+                                        <a href="{% url 'new_questionnaire' %}" class="btn btn-sm btn-neutral">New
+                                            Questionnaire</a>
+                             {% endif %}        
+                            <button class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#exampleModal">
+                                Filters
+                            </button>
+                        </div>
+                        <a class='mx-3' style="text-align: right" href="{% url  'dashboard' %}">Home</a>
+                        <div class="table-responsive">
+                        <p class="mx-3" style="text-align: right">
+                              
+                         Questionnaire count : {{total}}
+                         
+                        </p>
+                        <table class="table align-items-center table-flush view-table">
+                           
+                        <thead class="thead-view">
+                          <tr>
+                          
+                          <th>Serial No.</th>
+                          
+                          <th scope="col">Title</th>
+                          <th scope="col">Created At</th>
+                          <th scope="col">Active</th>
+                          <th scope="col">label</th>
+                          <th scope="col">Expires</th>
+                          <th scope="col">Number of Questions</th>
+                          <th scope="col">Target App</th>
+                          
+                          </tr>
+                        </thead>
+                        
+                        <!--table body start-->
+                      
+                      
+                       
+                      <tbody class="list">
+                  
+                        {% for QuestionnaireApi in QuestionnaireApis %}
+                          <tr class="view">
+                                <th scope="col">{{ forloop.counter}}</th>
+                                <td>{{ QuestionnaireApi.name }}</td>
+                               
+                                <td>{{ QuestionnaireApi.created_at }}</td>
+                                <td>{{  QuestionnaireApi.is_Active}}</td>
+                                 <!-- isActive badge -->
+                                 <td>{% if QuestionnaireApi.is_Active %}
+                                    <span class="badge badge-dot mr-4">
+                                    {% comment %} <i class="bg-success"></i> {% endcomment %}
+                                    <i class="fa-solid fa-badge-check"></i>
+                                    <span class="status">Active</span>
+                                </span>
+                                {% else %}
+                                    <span class="badge badge-dot mr-4">
+                                    <i class="bg-warning"></i>
+                                    <span class="status">Inactive</span>
+                                </span>
+
+                                {% endif %}
+                                </td>
+                                <td>{{  QuestionnaireApi.active_till }}</td>
+                                <td>{{  QuestionnaireApi.number_of_questions}}</td>
+                                <td>{{  QuestionnaireApi.target_app}}</td>
+                                </td>
+                            </tr>
+                              
+                            {% endfor %}
+                      
+                      </tbody>
+                                
+            
+                        <!--table body end-->
+                        </table>
+                        </div>
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+{% comment %}  {% endcomment %}
+
+
+
+{% endblock %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Date Filter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'questionnaire' %}" method="post" id="questForm">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xl-4">
+
+                                <label class="form-control-label" for="reportrange">Date Range</label>
+                                <div id="reportrange"
+                                     style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                    <i class="ni ni-calendar-grid-58"></i>&nbsp;
+                                    <span></span> <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% block scripts %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <script>
+        $(function () {
+            $(".view-table tr.view").on("click", function () {
+                $(this).toggleClass("open").next(".view-table").toggleClass("open");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        let start = moment().subtract(29, 'days');
+        let end = moment();
+        $(function () {
+            DateRange();
+            $('#questForm').submit(function () {
+                var form = document.getElementById('questForm');//retrieve the form as a DOM element
+
+                let input = document.createElement('input');//prepare a new input DOM element
+                input.setAttribute('name', 'start_date');//set the param name
+                input.setAttribute('value', start.format('YYYY-MM-DD'));//set the value
+                input.setAttribute('type', 'hidden')
+                form.appendChild(input);//append the input to the form
+
+                let input2 = document.createElement('input');//prepare a new input DOM element
+
+                input2.setAttribute('name', 'end_date');//set the param name
+                input2.setAttribute('value', end.format('YYYY-MM-DD'));//set the value
+                input2.setAttribute('type', 'hidden')
+                form.appendChild(input2);
+
+                form.submit();//send with added input
+            });
+        });
+
+        function DateRange() {
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
+
+            dateRange = $('#reportrange');
+            dateRange.daterangepicker({
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment(),
+                maxDate: moment(),
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb).on("apply.daterangepicker", function (event, picker) {
+                start = dateRange.data("daterangepicker").startDate;
+                end = dateRange.data("daterangepicker").endDate;
+            });
+
+            cb(start, end);
+
+        }
+
+    </script>
+{% endblock %}

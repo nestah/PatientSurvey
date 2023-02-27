@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block extra_css %}
+    <style xmlns="http://www.w3.org/1999/html">
+    </style>
+{% endblock %}
+{% block page_title %}
+ Tables
+{% endblock %}
+{% block content %}
+
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Users List</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+                <div class="card">
+                    <div class="card-body">
+                        {% comment %} <h5 class="card-title">Datatable</h5> {% endcomment %}
+                        <div class="table-responsive">
+                            <table id="zero_config" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Serial No.</th>
+                                    <th>UserName</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Super Admin</th>
+                                    <th>Last login</th>
+                                    <th>Created At</th>
+                                    
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                                     {% csrf_token %} 
+                                    {% for User in Users %}
+                                    <tr class="view">
+                                        <th scope="col">{{ forloop.counter}}</th>
+                                        <td>{{ User.get_username }}</td>
+                                        <td>{{ User.get_full_name }}</td>
+                                        <td>{{ User.email }}</td>
+                                        <td>{{ User.is_staff }}</td>
+                                        <td>{{ User.last_login }}</td>
+                                        <td>{{ User.date_joined|date:"d:m:Y H:i:s"}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                {% comment %} <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                </tr>
+                                </tfoot> {% endcomment %}
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+       
+             <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Dashboard</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white">Health Facilities</h6>
+                                <h6 class="text-white">1700</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Questionnaires</h6>
+                                <h6 class="text-white">{{total}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                      <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Active Questionnaires</h6>
+                                <h6 class="text-white">{{active}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-arrow-all"></i></h1>
+                                <h6 class="text-white">Completed surveys</h6>
+                                <h6 class="text-white">20</h6>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <label class="form-control-label" for="questionnaires">Questionnaire Responses</label>
+                                <div>
+                                    <select multiple="multiple" class="form-control" name="questionnaires" id="questionnaires"
+                                        placeholder="Questionnaires" onchange="facChange()" required>
+                                        {% for QuestionnaireApi in QuestionnaireApis %}
+                                        <option value="{{ QuestionnaireApi.id }}">{{ QuestionnaireApi.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                               
+                            </div>
+                           
+                        </div>
+                    </div> {% endcomment %}
+                    <iframe style="background: #F1F5F4;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-project-0-pzeir/embed/dashboards?id=ee9e7273-55b3-4709-ad3e-b650980b8c7f&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"></iframe>
+                
+           
+    {% endblock content %} 
+       
